@@ -2,22 +2,18 @@
 
 namespace App\Controller;
 
-use App\Repository\BookRepository;
+use App\Repository\ArticleRepository;
 
-class PageController extends Controller
+class ArticleController extends Controller
 {
     public function route(): void
     {
         try {
             if (isset($_GET['action'])) {
                 switch ($_GET['action']) {
-                    case 'home':
+                    case 'list':
                         //charger controleur home
-                        $this->home();
-                        break;
-                    case 'about':
-                        //charger controleur about
-                        $this->about();
+                        $this->list();
                         break;
                     default:
                         throw new \Exception("Cette action n'existe pas : " . $_GET['action']);
@@ -33,22 +29,12 @@ class PageController extends Controller
         }
     }
 
-    /*
-    Exemple d'appel depuis l'url
-        ?controller=page&action=home
-    */
-    protected function home()
+    public function list()
     {
-
-        $this->render('page/home', [
-            'test' => 555
-        ]);
-    }
-
-    protected function about()
-    {
-        $this->render('page/about', [
-            'about' => 'About'
+        $articleRepository = new ArticleRepository();
+        $articles = $articleRepository->findAll();
+        $this->render('article/list', [
+            'articles' => $articles
         ]);
     }
 }

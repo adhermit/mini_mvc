@@ -2,6 +2,13 @@
 
 namespace App\Controller;
 
+use App\Controller\BookController; // Ensure this class exists in the specified namespace
+// If the class does not exist, create it in the specified namespace
+use App\Controller\PageController;
+use App\Controller\AuthController;
+use App\Controller\UserController;
+use App\Controller\ArticleController;
+
 class Controller
 {
     public function route(): void
@@ -26,6 +33,10 @@ class Controller
                         break;
                     case 'user':
                         $controller = new UserController();
+                        $controller->route();
+                        break;
+                    case 'article':
+                        $controller = new ArticleController();
                         $controller->route();
                         break;
                     default:

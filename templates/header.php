@@ -28,6 +28,12 @@ use App\Tools\NavigationTools;
                 <li class="nav-item">
                     <a href="/" class="nav-link px-2 <?= NavigationTools::addActiveClass('page', 'home') ?>">Accueil</a>
                 </li>
+                <li class="nav-item">
+                    <a href="/index.php?controller=page&action=about" class="nav-link px-2 <?= NavigationTools::addActiveClass('page', 'about') ?>">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/index.php?controller=article&action=list" class="nav-link px-2 <?= NavigationTools::addActiveClass('page', 'article') ?>">Article</a>
+                </li>
             </ul>
 
             <div class="col-md-3 text-end">
